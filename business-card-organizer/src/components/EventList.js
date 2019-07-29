@@ -21,11 +21,11 @@ const EventList = () => {
 
     return (
         <div>
-            <h1>Hello from the EventList</h1>
+            <h1>EventList:</h1>
             <EventCard />
 
-            <p>{event.map(e => (
-                <EventCard key={e.id} e={e} /> ))}</p>
+            {/* <p>{event.map(e => (
+                <EventCard key={e.id} e={e} /> ))}</p> */}
         </div>
     )
 }
