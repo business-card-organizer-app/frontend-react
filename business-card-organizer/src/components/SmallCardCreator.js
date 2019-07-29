@@ -11,6 +11,7 @@ const StyledCardContainer = styled.div `
     flex-flow: row nowrap;
     padding-top: 30px;
     padding-bottom: 30px;
+    margin-left: 6.25%;
 `;
 
 const StyledTextContainer = styled.div `
