@@ -26,30 +26,14 @@ const StyledLastPar = styled.p`
     padding: 0 0 10px 0;
 `;
 
-const EventCard = () => {
-    const props = {
-        "status": 201,
-        "data": [
-            {
-                "event_name": "Lambda Build Week",
-                "event_date": "22/8/2019",
-                "event_venue" : "Zoom",
-                "event_location": "Online",
-                "user_id" : 2,
-            }
-        ]
-    }
-
-    const consoleFunc = () => {
-        return console.log('clicked')
-    }
+const EventCard = (props) => {
     
     return (
         <StyledDiv>
-            <StyledH>{props.data[0].event_name}</StyledH>
-            <p>Date: {props.data[0].event_date}</p>
-            <p>Venue: {props.data[0].event_venue}</p>
-            <StyledLastPar>Location: {props.data[0].event_location}</StyledLastPar>
+            <StyledH>{props.event_name}</StyledH>
+            <p>Date: {props.event_date}</p>
+            <p>Venue: {props.event_venue}</p>
+            <StyledLastPar>Location: {props.event_location}</StyledLastPar>
             <StyledButtonPar>Cards: ***</StyledButtonPar>
         </StyledDiv>
     )
