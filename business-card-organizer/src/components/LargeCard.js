@@ -6,7 +6,16 @@ const editButton = (<Button onClick={<Redirect to='/INSERT EDIT URL HERE' />}>Ed
 
 const LargeCard = (props) => {
 
+return (
+    <div><Card 
+    header={props.first_name + props.last_name} 
+    meta={props.occupation} 
+    meta={props.phone} 
+    meta={props.email} 
+    description={props.tagline} 
+    image={props.qr_code} 
+    extra={editButton} />
+    </div>)
 }
-return (<div><Card header={props.first_name + props.last_name} meta={props.occupation} meta={props.phone} meta={props.email} description={props.tagline} image={props.qr_code} extra={editButton} />
-</div>)
+
 export default LargeCard;

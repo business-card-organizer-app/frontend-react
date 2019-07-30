@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios';
+
 import EventCard from './EventCard';
 
 const EventList = () => {
@@ -41,7 +42,7 @@ const EventList = () => {
 
     return (
         <div>
-            <h1>EventList:</h1>
+            <h1>Event List:</h1>
 
             {temp.data.map(e => (
                 <EventCard key={e.id} {...e} props={e} /> ))}
