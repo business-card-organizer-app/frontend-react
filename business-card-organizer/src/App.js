@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import CardList from './components/CardList';
+import EventList from './components/EventList';
 import { Route, Switch } from 'react-router-dom';
 
 import { PrivateRoute } from './helpers';
@@ -27,6 +28,7 @@ function App() {
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/cards' render={cards => <CardList cardcollection={cards} />} />
+        <Route exact path='/events' component={EventList} />
         <PrivateRoute exact path='/' component={Home} />
         <Route component={NotFound} />
       </Switch>
