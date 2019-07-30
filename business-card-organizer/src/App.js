@@ -18,16 +18,37 @@ const NotFound = props => {
 };
 
 function App() {
-
-  const [cards, setCards] = useState([{"first_name": "Levi", "last_name": "Thomas", "occupation": "WebDev", "phone": "555-5555", "email": "levi@levithomas.dev", "tagline": "YEET", "qr_code": "#"},
-{"first_name": "Levi", "last_name": "Thomas", "occupation": "WebDev", "phone": "555-5555", "email": "levi@levithomas.dev", "tagline": "YEET", "qr_code": "#"}])
+  const [cards, setCards] = useState([
+    {
+      first_name: 'Levi',
+      last_name: 'Thomas',
+      occupation: 'WebDev',
+      phone: '555-5555',
+      email: 'levi@levithomas.dev',
+      tagline: 'YEET',
+      qr_code: '#'
+    },
+    {
+      first_name: 'Levi',
+      last_name: 'Thomas',
+      occupation: 'WebDev',
+      phone: '555-5555',
+      email: 'levi@levithomas.dev',
+      tagline: 'YEET',
+      qr_code: '#'
+    }
+  ]);
 
   return (
     <div className='App'>
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
-        <Route exact path='/cards' render={cards => <CardList cardcollection={cards} />} />
+        <Route
+          exact
+          path='/cards'
+          render={props => <CardList {...props} cardcollection={cards} />}
+        />
         <Route exact path='/events' component={EventList} />
         <PrivateRoute exact path='/' component={Home} />
         <Route component={NotFound} />
