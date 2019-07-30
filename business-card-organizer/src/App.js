@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Switch } from 'react-router-dom';
+
+import { PrivateRoute } from './helpers';
+
+import { Login, Register } from './containers/auth';
 import './App.css';
+
+const Home = () => {
+  return <h1>lol</h1>;
+};
+
+const NotFound = props => {
+  return <h1>404!!!</h1>;
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Switch>
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/register' component={Register} />
+        <PrivateRoute exact path='/' component={Home} />
+        <Route component={NotFound} />
+      </Switch>
     </div>
   );
 }
