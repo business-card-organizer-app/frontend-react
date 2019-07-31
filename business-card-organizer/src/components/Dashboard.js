@@ -3,6 +3,7 @@ import React from 'react';
 import LargeCard from './LargeCard';
 import EventList from './EventList';
 import CollectionList from './CollectionList';
+import NavBar from './components/NavBar/NavBar'
 
 import styled from 'styled-components';
 
@@ -13,20 +14,20 @@ const StyledDashboardContainer = styled.div`
     flex-flow: column nowrap;
 `;
 
-export default function Dashboard (props) {
+export default function Dashboard(props) {
 
-   const { activeuser, userevents, cardcollection } = props;
+    const { activeuser, userevents, cardcollection } = props;
 
-    return(
+    return (
         <StyledDashboardContainer>
             <LargeCard
-            first_name={activeuser.first_name}
-            last_name={activeuser.last_name}
-            occupation={activeuser.occupation}
-            phone={activeuser.phone}
-            email={activeuser.email}
-            tagline={activeuser.tagline}
-            qr_code={activeuser.qr_code} />
+                first_name={activeuser.first_name}
+                last_name={activeuser.last_name}
+                occupation={activeuser.occupation}
+                phone={activeuser.phone}
+                email={activeuser.email}
+                tagline={activeuser.tagline}
+                qr_code={activeuser.qr_code} />
             <div className="list-container">
                 <EventList userevents={userevents} />
                 <CollectionList cardcollection={cardcollection} />

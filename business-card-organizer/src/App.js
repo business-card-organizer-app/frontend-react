@@ -59,6 +59,7 @@ function App() {
         <Route exact path='/events/add' component={AddEvent} />
         <PrivateRoute exact path='/' component={Home} />
         <Route component={NotFound} />
+
       </Switch>
     </div>
   );
