@@ -13,12 +13,14 @@ const EventList = props => {
   ]);
 
   return (
-    <div>
+    <div className='event-list'>
       <h1>EventList:</h1>
+      {/* Currently set up as a dashboard component. Need to re-name and render the full component onClick of see al */}
 
-      {userEventsList.map(e => (
-        <EventCard key={e.id} {...e} props={e} />
-      ))}
+      {userEventsList.map((e, i) =>
+        i < 3 ? <EventCard key={e.id} {...e} props={e} /> : null
+      )}
+      <button>See all</button>
     </div>
   );
 };
