@@ -20,7 +20,9 @@ export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
   return axios({
     ...axiosOptions,
-    url: 'login'
+    method: 'post',
+    url: 'login',
+    data: creds
   })
     .then(res => {
       const { id, token } = res.data.data[0];
