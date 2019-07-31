@@ -14,9 +14,12 @@ const EventList = props => {
 
   return (
     <div className='event-list'>
-      <h1>EventList:</h1>
+      <h1>
+        [{props.eventsForUser.length}]
+        EventList:
+      </h1>
 
-      {userEventsList.map((e, i) =>
+      {userEventsList.map(e =>
         <EventCard key={e.id} {...e} props={e} /> )}
     </div>
   );
