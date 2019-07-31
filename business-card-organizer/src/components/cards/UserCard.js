@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
 import { Card } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
-// Maybe change to props.history.push('/profile/edit')
-const editButton = <button onClick={<Redirect to='/card/edit' />}>Edit</button>;
-
-const LargeCard = props => {
+const UserCard = props => {
   const [userInfo, setUserInfo] = useState({
-    email: '',
     first_name: '',
     last_name: '',
+    email: ''
+  });
+
+  const [cardInfo, setCardInfo] = useState({
     occupation: '',
     phone: '',
     tagline: '',
@@ -21,6 +20,7 @@ const LargeCard = props => {
     let handle = props.userId;
     if (props.match.params.id) handle = props.match.params.id;
     props.getUser(handle);
+    props.getCard(handle);
   }, []);
 
   useEffect(() => {
@@ -30,19 +30,30 @@ const LargeCard = props => {
     });
   }, [props.user]);
 
+  useEffect(() => {
+    setCardInfo({
+      ...cardInfo,
+      ...props.card
+    });
+  }, [props.card]);
+
+  const editButton = (
+    <button onClick={() => props.history.push('/profile/edit')}>Edit</button>
+  );
+
   return (
     <div>
       <Card
         header={userInfo.first_name + userInfo.last_name}
-        meta={userInfo.occupation}
-        meta={userInfo.phone}
+        meta={cardInfo.occupation}
+        meta={cardInfo.phone}
         meta={userInfo.email}
-        description={userInfo.tagline}
-        image={userInfo.qr_code}
+        description={cardInfo.tagline}
+        image={cardInfo.qr_code}
         extra={editButton}
       />
     </div>
   );
 };
 
-export default LargeCard;
+export default UserCard;
