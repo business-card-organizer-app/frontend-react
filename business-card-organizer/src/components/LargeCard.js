@@ -20,7 +20,9 @@ const LargeCard = props => {
   });
 
   useEffect(() => {
-    props.getUser(props.userId);
+    let handle = props.userId;
+    if (props.match.params.id) handle = props.match.params.id;
+    props.getUser(handle);
   }, []);
 
   useEffect(() => {

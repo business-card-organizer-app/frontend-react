@@ -53,6 +53,7 @@ function App() {
           render={props => <CardList {...props} cardcollection={cards} />}
         />
         <Route exact path='/profile' component={ProfileCard} />
+        <Route exact path='/profile/:id' component={ProfileCard} />
         <Route exact path='/profile/edit' component={EditUser} />
         <Route exact path='/events' component={EventList} />
         <Route exact path='/events/add' component={AddEvent} />
