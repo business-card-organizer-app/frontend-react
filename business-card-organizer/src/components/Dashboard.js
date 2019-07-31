@@ -29,7 +29,7 @@ export default function Dashboard (props) {
             qr_code={activeuser.qr_code} />
             <div className="list-container">
                 <EventShortList userevents={userevents} />
-                <CollectionShortList cardcollection={cardcollection} />
+                <CardShortList cardcollection={cardcollection} />
             </div>
         </StyledDashboardContainer>
     )
