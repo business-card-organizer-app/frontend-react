@@ -19,7 +19,7 @@ const EventShortList = props => {
 
   return (
     <div className='event-short-list'>
-      <h1>EventList:</h1>
+      <h1>My Events:</h1>
 
       {userEventsList.map((e, i) =>
         i < 3 ? <EventCard key={e.id} {...e} props={e} /> : null)}
