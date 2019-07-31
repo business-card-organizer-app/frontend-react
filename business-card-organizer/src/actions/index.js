@@ -51,6 +51,7 @@ export const register = creds => dispatch => {
   return axios({
     ...axiosOptions,
     method: 'post',
+    url: 'register',
     data: creds
   })
     .then(res => {
