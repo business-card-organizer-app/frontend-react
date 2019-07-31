@@ -147,7 +147,7 @@ export const addEvent = (userId, eventInfo) => dispatch => {
     ...axiosOptions,
     method: 'post',
     url: `user/${userId}/event`,
-    data: testData
+    data: eventInfo
   })
     .then(res => {
       console.log(res);

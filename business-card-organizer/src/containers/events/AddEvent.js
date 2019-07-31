@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import { addEvent } from '../../actions';
 import { AddEvent } from '../../components/events';
 
-const mapStateToProps = ({ userReducer }) => ({
-  error: userReducer.error,
-  userId: userReducer.userId,
-  gettingUser: userReducer.editingUser
+const mapStateToProps = ({ eventReducer }) => ({
+  error: eventReducer.error,
+  userId: eventReducer.userId,
+  addingEvent: eventReducer.editingUser
 });
 
 export default connect(
