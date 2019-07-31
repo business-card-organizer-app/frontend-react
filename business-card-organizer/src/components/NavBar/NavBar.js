@@ -4,7 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 const NavBar = (props) => {
     function handleLogout() {
         localStorage.removeItem('token')
-        //This will need to become functional
+
     }
     return (<Menu compact inverted size="large">
         <Menu.Menu position='left'>
