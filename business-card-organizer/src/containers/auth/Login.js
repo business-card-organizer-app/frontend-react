@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import { login } from '../../actions';
 import { Login } from '../../components/auth';
 
-const mapStateToProps = ({ error, loggingIn }) => ({
-  error,
-  loggingIn
+const mapStateToProps = ({ authReducer }) => ({
+  error: authReducer.error,
+  loggingIn: authReducer.loggingIn
 });
 
 export default connect(
