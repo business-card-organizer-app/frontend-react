@@ -1,9 +1,9 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EventCard from './EventCard';
 import { Link } from 'react-router-dom';
 
-const EventList = () => {
+const EventListShort = () => {
     const [event, setEvent] = useState([])
     // Unsure where state will be initialized. Map function is set up to receive 'userevents'
     useEffect(() => {
@@ -85,4 +85,4 @@ const EventList = () => {
     )
 }
 
-export default EventList;
+export default EventListShort;
