@@ -1,14 +1,15 @@
 import React from 'react';
+
 import SmallCardCreator from './SmallCardCreator';
 
 import styled from 'styled-components';
 
 const StyledCardList = styled.div`
-  max-width: 1200px;
+  max-width: 500px;
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
+  flex-flow: column nowrap;
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
 `;
