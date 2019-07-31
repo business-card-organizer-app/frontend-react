@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 
-import CardList from './components/CardList';
-import EventList from './components/EventList';
+import { CardList } from './components/cardlist';
+import { EventList } from './containers/events';
 import { Route, Switch } from 'react-router-dom';
 
 import { PrivateRoute } from './helpers';
 
 import { Login, Register } from './containers/auth';
 import './App.css';
+import { ProfileCard } from './containers/profile';
+import { EditUser } from './containers/edit';
+import { AddEvent } from './containers/events';
 
 const Home = () => {
   return <h1>lol</h1>;
@@ -49,7 +52,10 @@ function App() {
           path='/cards'
           render={props => <CardList {...props} cardcollection={cards} />}
         />
+        <Route exact path='/profile' component={ProfileCard} />
+        <Route exact path='/edit' component={EditUser} />
         <Route exact path='/events' component={EventList} />
+        <Route exact path='/addevent' component={AddEvent} />
         <PrivateRoute exact path='/' component={Home} />
         <Route component={NotFound} />
       </Switch>
