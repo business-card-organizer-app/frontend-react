@@ -1,8 +1,8 @@
 import React from 'react';
 
 import LargeCard from './LargeCard';
-import EventList from './EventList';
-import CollectionList from './CollectionList';
+import EventShortList from './EventShortList';
+import CollectionShortList from './CollectionShortList';
 
 import styled from 'styled-components';
 
@@ -28,8 +28,8 @@ export default function Dashboard (props) {
             tagline={activeuser.tagline}
             qr_code={activeuser.qr_code} />
             <div className="list-container">
-                <EventList userevents={userevents} />
-                <CollectionList cardcollection={cardcollection} />
+                <EventShortList userevents={userevents} />
+                <CollectionShortList cardcollection={cardcollection} />
             </div>
         </StyledDashboardContainer>
     )

@@ -5,7 +5,16 @@ import SmallCardCreator from '../cardlist/SmallCardCreator';
 import styled from 'styled-components';
 
 export default function ProfileViewRemove (props) {
-    const { user } = props;
+    const { user, activeuser, collectionSetter } = props;
+
+    // Not sure the easiest way here, basically trying to remove the user's id
+    // From the activeuser's collection and reset the collection state on the app.
+    const removeHandler = () => {
+        const newcollection = activeuser.collection.map(
+            (id) => id !== user.user_id ? () => {return id} : () => {return null}
+        );
+        collectionSetter(newcollection);
+    }
 
     return (
         <div className="profile-container">
@@ -15,8 +24,9 @@ export default function ProfileViewRemove (props) {
             occupation={user.occupation}
             phone={user.phone}
             email={user.email}
-            tagline={user.tagline} />
-            <button className="remove-collection">Remove from Collection</button>
+            tagline={user.tagline}
+            qr_code={user.qr_code} />
+            <button className="remove-collection" onClick={removeHandler}>Remove from Collection</button>
         </div>
     )
 }
