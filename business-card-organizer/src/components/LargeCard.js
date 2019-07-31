@@ -4,9 +4,7 @@ import { Card } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 // Maybe change to props.history.push('/profile/edit')
-const editButton = (
-  <button onClick={<Redirect to='/profile/edit' />}>Edit</button>
-);
+const editButton = <button onClick={<Redirect to='/card/edit' />}>Edit</button>;
 
 const LargeCard = props => {
   const [userInfo, setUserInfo] = useState({

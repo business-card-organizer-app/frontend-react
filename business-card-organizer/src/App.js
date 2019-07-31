@@ -60,6 +60,7 @@ function App() {
         <Route exact path='/events/add' component={AddEvent} />
         <Route exact path='/card' component={UserCard} />
         <Route exact path='/card/add' component={CreateCard} />
+        <Route exact path='/card/edit' component={CreateCard} />
         <Route exact path='/card/:id' component={UserCard} />
         <PrivateRoute exact path='/' component={Home} />
         <Route component={NotFound} />

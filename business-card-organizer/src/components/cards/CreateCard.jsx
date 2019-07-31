@@ -7,7 +7,7 @@ const moment = require('moment');
 const CreateCard = props => {
   const [cardInfo, setCardInfo] = useState({
     occupation: '',
-    phone: '2063028918',
+    phone: '',
     qr_code: ''
   });
 
@@ -19,17 +19,28 @@ const CreateCard = props => {
   };
 
   useEffect(() => {
+    props.getCard(props.userId);
+  }, []);
+
+  useEffect(() => {
     setCardInfo({
       ...cardInfo,
+      ...props.card,
       qr_code: `http://lvh.me/card/${props.userId}` // TODO change to final URL
     });
-  }, props.userId);
+  }, [props.userId, props.card]);
 
   const addCard = e => {
     e.preventDefault();
-    props
-      .addCard(props.userId, cardInfo)
-      .then(() => props.history.push(`${props.userId}`));
+    if (!props.card) {
+      props
+        .addCard(props.userId, cardInfo)
+        .then(() => props.history.push(`${props.userId}`));
+    } else {
+      props
+        .editCard(props.userId, { ...cardInfo, qr_code: props.card.qr_code })
+        .then(() => props.history.push(`${props.userId}`));
+    }
   };
 
   return (

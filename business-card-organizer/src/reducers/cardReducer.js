@@ -11,7 +11,8 @@ const initialState = {
   email: localStorage.getItem('email'),
   error: '',
   gettingCard: false,
-  creatingCard: false
+  creatingCard: false,
+  editingCard: false
 };
 
 export const cardReducer = (state = initialState, action) => {
@@ -27,7 +28,7 @@ export const cardReducer = (state = initialState, action) => {
       return {
         ...state,
         gettingCard: false,
-        user: { ...action.payload.data.data[0] },
+        card: { ...action.payload.data.data[0] },
         error: null
       };
     case actionType.GET_CARD_ERROR:
@@ -48,13 +49,34 @@ export const cardReducer = (state = initialState, action) => {
       return {
         ...state,
         addingCard: false,
-        card: action.payload.data.data,
+        card: action.payload.data.data[0],
         error: null
       };
     case actionType.CARD_ADD_ERROR:
       return {
         ...state,
         addingCard: false,
+        error: action.error
+      };
+
+    // CARD_EDIT
+    case actionType.CARD_EDIT_START:
+      return {
+        ...state,
+        editingCard: true,
+        error: null
+      };
+    case actionType.CARD_EDIT_SUCCESS:
+      return {
+        ...state,
+        editingCard: false,
+        card: action.payload.data.data[0],
+        error: null
+      };
+    case actionType.CARD_EDIT_ERROR:
+      return {
+        ...state,
+        editingCard: false,
         error: action.error
       };
     default:

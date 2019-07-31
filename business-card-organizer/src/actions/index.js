@@ -205,3 +205,25 @@ export const addCard = (userId, cardInfo) => dispatch => {
       dispatch({ type: CARD_ADD_ERROR, error: err });
     });
 };
+
+export const CARD_EDIT_START = 'CARD_EDIT_START';
+export const CARD_EDIT_SUCCESS = 'CARD_EDIT_SUCCESS';
+export const CARD_EDIT_ERROR = 'CARD_EDIT_ERROR';
+
+export const editCard = (userId, cardInfo) => dispatch => {
+  dispatch({ type: CARD_EDIT_START });
+  return axios({
+    ...axiosOptions,
+    method: 'patch',
+    url: `user/${userId}/card`,
+    data: cardInfo
+  })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: CARD_EDIT_SUCCESS, payload: res });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: CARD_EDIT_ERROR, error: err });
+    });
+};
