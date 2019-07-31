@@ -38,7 +38,7 @@ const UserCard = props => {
   }, [props.card]);
 
   const editButton = (
-    <button onClick={() => props.history.push('/profile/edit')}>Edit</button>
+    <button onClick={() => props.history.push('/card/edit')}>Edit</button>
   );
 
   return (

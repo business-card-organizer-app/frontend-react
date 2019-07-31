@@ -32,7 +32,7 @@ const CreateCard = props => {
 
   const addCard = e => {
     e.preventDefault();
-    if (!props.card) {
+    if (!props.card || !props.card.phone) {
       props
         .addCard(props.userId, cardInfo)
         .then(() => props.history.push(`${props.userId}`));
