@@ -161,3 +161,47 @@ export const addEvent = (userId, eventInfo) => dispatch => {
       dispatch({ type: EVENT_ADD_ERROR, error: err });
     });
 };
+
+// GET CARD
+
+export const GET_CARD_START = 'GET_CARD_START';
+export const GET_CARD_SUCCESS = 'GET_CARD_SUCCESS';
+export const GET_CARD_ERROR = 'GET_CARD_ERROR';
+
+export const getCard = userId => dispatch => {
+  dispatch({ type: GET_CARD_START });
+  return axios({
+    ...axiosOptions,
+    url: `user/${userId}/card`
+  })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: GET_CARD_SUCCESS, payload: res });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: GET_CARD_ERROR, error: err });
+    });
+};
+
+export const CARD_ADD_START = 'CARD_ADD_START';
+export const CARD_ADD_SUCCESS = 'CARD_ADD_SUCCESS';
+export const CARD_ADD_ERROR = 'CARD_ADD_ERROR';
+
+export const addCard = (userId, cardInfo) => dispatch => {
+  dispatch({ type: CARD_ADD_START });
+  return axios({
+    ...axiosOptions,
+    method: 'post',
+    url: `user/${userId}/card`,
+    data: cardInfo
+  })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: CARD_ADD_SUCCESS, payload: res });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: CARD_ADD_ERROR, error: err });
+    });
+};

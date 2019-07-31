@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { CardList } from './components/cardlist';
+import { UserCard, CreateCard } from './containers/cards';
 import { EventList } from './containers/events';
 import { Route, Switch } from 'react-router-dom';
 
@@ -57,6 +58,9 @@ function App() {
         <Route exact path='/profile/edit' component={EditUser} />
         <Route exact path='/events' component={EventList} />
         <Route exact path='/events/add' component={AddEvent} />
+        <Route exact path='/card' component={UserCard} />
+        <Route exact path='/card/add' component={CreateCard} />
+        <Route exact path='/card/:id' component={UserCard} />
         <PrivateRoute exact path='/' component={Home} />
         <Route component={NotFound} />
       </Switch>
