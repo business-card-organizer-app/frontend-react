@@ -4,6 +4,10 @@
 .event-list {
   border: 1px solid black;
   max-width: 500px;
+}
+.event-short-list {
+  border: 1px solid black;
+  max-width: 500px;
   max-height: 500px;
   overflow-y: scroll;
 }
