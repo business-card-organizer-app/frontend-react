@@ -53,9 +53,9 @@ function App() {
           render={props => <CardList {...props} cardcollection={cards} />}
         />
         <Route exact path='/profile' component={ProfileCard} />
-        <Route exact path='/edit' component={EditUser} />
+        <Route exact path='/profile/edit' component={EditUser} />
         <Route exact path='/events' component={EventList} />
-        <Route exact path='/addevent' component={AddEvent} />
+        <Route exact path='/events/add' component={AddEvent} />
         <PrivateRoute exact path='/' component={Home} />
         <Route component={NotFound} />
       </Switch>
