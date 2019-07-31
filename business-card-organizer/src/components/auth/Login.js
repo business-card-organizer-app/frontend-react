@@ -18,7 +18,8 @@ const Login = props => {
 
   const login = e => {
     e.preventDefault();
-    const from = props.location.state.from || '/';
+    const from = '/';
+    if (props.location.state) from = props.location.state.from || '/';
     props.login(credentials).then(() => props.history.push(from));
   };
 
