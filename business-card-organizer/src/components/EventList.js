@@ -4,10 +4,10 @@ import EventCard from './EventCard';
 
 const EventList = () => {
     const [event, setEvent] = useState([])
-
+    // Unsure where state will be initialized. Map function is set up to receive 'userevents'
     useEffect(() => {
         const getEvent = () => {
-            axios.get('https://bussiness-card-app.herokuapp.com/api/user/:id/event/')
+            axios.get(`https://bussiness-card-app.herokuapp.com/api/user/:id/event/`)
             .then(response => {
                 console.log(response)
                 setEvent(response.data)
@@ -19,7 +19,7 @@ const EventList = () => {
         getEvent();
     }, [])
 
-    const temp = {
+    const userevents = {
         "status": 201,
         "data": [
             {
@@ -34,17 +34,52 @@ const EventList = () => {
                 "event_date": "10/9/2019",
                 "event_venue" : "Digital Cafe",
                 "event_location": "Downtown",
-                "user_id" : 3,
+                "user_id" : 2,
+            },
+            {
+                "event_name": "Coding Brunch",
+                "event_date": "21/9/2019",
+                "event_venue" : "King St Cafe",
+                "event_location": "Uptown",
+                "user_id" : 2,
+            },
+            {
+                "event_name": "Hackathon ",
+                "event_date": "18/10/2019",
+                "event_venue" : "Charleston Place",
+                "event_location": "Hotel",
+                "user_id" : 2,
+            },
+            {
+                "event_name": "Holloween Meetup",
+                "event_date": "31/10/2019",
+                "event_venue" : "Recovery Room",
+                "event_location": "CrossTown",
+                "user_id" : 2,
+            },
+            {
+                "event_name": "Open Source Conference",
+                "event_date": "23/11/2019",
+                "event_venue" : "Francis Marion Hotel",
+                "event_location": "Downtown",
+                "user_id" : 2,
             }
         ]
     }
 
     return (
-        <div>
+        <div className='event-list'>
             <h1>EventList:</h1>
+            {/* Currently set up as a dashboard component. Need to re-name and render the full component onClick of see al */}
 
-            {temp.data.map(e => (
-                <EventCard key={e.id} {...e} props={e} /> ))}
+            {userevents.data.map((e, i) => (
+                i < 3 ?
+                <EventCard 
+                    key={e.id}
+                    {...e} 
+                    props={e} />
+                : null ))}
+                <button>See all</button>
         </div>
     )
 }

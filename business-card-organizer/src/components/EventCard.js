@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledDiv = styled.div`
     text-align: left;
@@ -13,20 +14,14 @@ const StyledH = styled.h1`
     margin: 0;
 `;
 
-const StyledButtonPar = styled.button`
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 5px;
-    width: 25%;
-    text-align: center;
-`;
-
 const StyledLastPar = styled.p`
     border-bottom: 1px solid black;
     padding: 0 0 10px 0;
 `;
 
 const EventCard = (props) => {
+
+    console.log(props)
     
     return (
         <StyledDiv>
@@ -34,11 +29,12 @@ const EventCard = (props) => {
             <p>Date: {props.event_date}</p>
             <p>Venue: {props.event_venue}</p>
             <StyledLastPar>Location: {props.event_location}</StyledLastPar>
-            <StyledButtonPar>Cards: ***</StyledButtonPar>
+            <Link to='#' className='event-button'>Cards: ***</Link>
         </StyledDiv>
     )
 }
 
 // *** = Need to add a count of the cards collected from the event
+// Need to create path for link to display all cards from a particular event
 
 export default EventCard;
