@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { CardList } from './components/cardlist';
+import { UserCard, CreateCard } from './containers/cards';
 import { EventList } from './containers/events';
 import { Route, Switch } from 'react-router-dom';
 
@@ -12,7 +13,7 @@ import { ProfileCard } from './containers/profile';
 import { EditUser } from './containers/edit';
 import { AddEvent } from './containers/events';
 
-const Home = () => {
+const Dashboard = () => {
   return <h1>lol</h1>;
 };
 
@@ -47,18 +48,23 @@ function App() {
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
-        <Route
+        <PrivateRoute
           exact
           path='/cards'
           render={props => <CardList {...props} cardcollection={cards} />}
         />
-        <Route exact path='/profile' component={ProfileCard} />
-        <Route exact path='/profile/:id' component={ProfileCard} />
-        <Route exact path='/profile/edit' component={EditUser} />
-        <Route exact path='/events' component={EventList} />
-        <Route exact path='/events/add' component={AddEvent} />
-        <PrivateRoute exact path='/' component={Home} />
+        <PrivateRoute exact path='/profile' component={UserCard} />
+        <PrivateRoute exact path='/profile/edit' component={EditUser} />
+        <PrivateRoute exact path='/profile/:id' component={UserCard} />
+        <PrivateRoute exact path='/events' component={EventList} />
+        <PrivateRoute exact path='/events/add' component={AddEvent} />
+        <PrivateRoute exact path='/card' component={UserCard} />
+        <PrivateRoute exact path='/card/add' component={CreateCard} />
+        <PrivateRoute exact path='/card/edit' component={CreateCard} />
+        <PrivateRoute exact path='/card/:id' component={UserCard} />
+        <PrivateRoute exact path='/' component={Dashboard} />
         <Route component={NotFound} />
+
       </Switch>
     </div>
   );
