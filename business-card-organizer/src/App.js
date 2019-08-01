@@ -47,6 +47,7 @@ function App() {
 
   return (
     <div className='App'>
+      {/* <NavBar /> */}
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />

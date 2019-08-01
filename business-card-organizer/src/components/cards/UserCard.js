@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Form, Card, Image, Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 const UserCard = props => {
+  const [eventsToSelect, setEventsToSelect] = useState([]);
+  const [selectedEventId, setSelectedEventId] = useState(0);
+
   const [userInfo, setUserInfo] = useState({
     first_name: '',
     last_name: '',
@@ -22,10 +25,9 @@ const UserCard = props => {
     else if (props.match) {
       if (props.match.params.id) handle = props.match.params.id;
     }
-    console.log(props.id);
-    console.log(handle);
     props.getUser(handle);
     props.getCard(handle);
+    props.getUserEvents(props.loggedInUserId);
   }, []);
 
   useEffect(() => {
@@ -42,40 +44,69 @@ const UserCard = props => {
     });
   }, [props.card]);
 
+  useEffect(() => {
+    const eventsArray = props.events.map(event => {
+      return {
+        key: event.id,
+        text: event.name_event,
+        value: event.id
+      };
+    });
+    setEventsToSelect(eventsArray);
+    console.log(eventsArray);
+  }, [props.events]);
+
   const editButton = (
     <button onClick={() => props.history.push('/card/edit')}>Edit</button>
   );
 
+  const handleChange = (event, { value }) => {
+    console.log(value);
+    setSelectedEventId(value);
+  };
+
+  const addToCollectionButton = (
+    <Form
+      onSubmit={() =>
+        props.addCardCollection(props.userId, {
+          card_id: props.card.id,
+          event_id: selectedEventId
+        })
+      }
+    >
+      <Dropdown
+        placeholder='Select Event'
+        onChange={handleChange}
+        fluid
+        selection
+        options={eventsToSelect}
+      />
+      <button>Add to Collection</button>
+    </Form>
+  );
+
   return (
-    // <div>
-    //   <Card
-    //     header={userInfo.first_name + userInfo.last_name}
-    //     meta={cardInfo.occupation}
-    //     meta={cardInfo.phone}
-    //     meta={userInfo.email}
-    //     description={cardInfo.tagline}
-    //     image={cardInfo.qr_code}
-    //     extra={editButton}
-    //   />
-    // </div>
-    <div>
-      <Card>
-        <Image src={cardInfo.qr_code} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header>
-            {`${userInfo.first_name} ${userInfo.last_name}`}
-          </Card.Header>
-          <Card.Meta>
-            <span className='email'>{userInfo.email}</span>
-          </Card.Meta>
-          <Card.Meta>
-            <span className='tel'>{cardInfo.phone}</span>
-          </Card.Meta>
-          <Card.Description>{cardInfo.occupation}</Card.Description>
-        </Card.Content>
-        <Card.Content extra>{editButton}</Card.Content>
-      </Card>
-    </div>
+    <Card>
+      <Image src={cardInfo.qr_code} wrapped ui={false} />
+      <Card.Content>
+        <Card.Header>
+          {`${userInfo.first_name} ${userInfo.last_name}`}
+        </Card.Header>
+        <Card.Meta>
+          <span className='email'>{userInfo.email}</span>
+        </Card.Meta>
+        <Card.Meta>
+          <span className='tel'>{cardInfo.phone}</span>
+        </Card.Meta>
+        <Card.Description>{cardInfo.occupation}</Card.Description>
+      </Card.Content>
+
+      {props.loggedInUserId === props.userId ? (
+        <Card.Content extra> {editButton}</Card.Content>
+      ) : (
+        <Card.Content extra> {addToCollectionButton}</Card.Content>
+      )}
+    </Card>
   );
 };
 

@@ -1,8 +1,18 @@
 import { connect } from 'react-redux';
-import { getCard, getUser } from '../../actions';
+import {
+  getCard,
+  getUser,
+  addCardCollection,
+  getUserEvents
+} from '../../actions';
 import { UserCard } from '../../components/cards';
 
-const mapStateToProps = ({ cardReducer, userReducer }) => ({
+const mapStateToProps = ({
+  cardReducer,
+  userReducer,
+  authReducer,
+  eventReducer
+}) => ({
   cardGetError: cardReducer.error,
   userGetError: userReducer.error,
   gettingCard: cardReducer.editingUser,
@@ -10,10 +20,12 @@ const mapStateToProps = ({ cardReducer, userReducer }) => ({
   userId: userReducer.userId,
   cardId: cardReducer.cardId,
   card: cardReducer.card,
-  user: userReducer.user
+  user: userReducer.user,
+  loggedInUserId: authReducer.userId,
+  events: eventReducer.eventsForUser
 });
 
 export default connect(
   mapStateToProps,
-  { getCard, getUser }
+  { getCard, getUser, addCardCollection, getUserEvents }
 )(UserCard);

@@ -1,4 +1,4 @@
-// This is the shortlist for the homepage view. 
+// This is the shortlist for the homepage view.
 // This will link to the full EventList at '/events'
 // Will need to render as ```<EventShortList {...props} props={props} />```
 
@@ -22,9 +22,12 @@ const EventShortList = props => {
       <h1>My Events:</h1>
 
       {userEventsList.map((e, i) =>
-        i < 3 ? <EventCard key={e.id} {...e} props={e} /> : null)}
+        i < 3 ? <EventCard key={e.id} {...e} props={e} /> : null
+      )}
 
-      <Link className='event-button' to='/events'>See all</Link>
+      <Link className='event-button' to='/events'>
+        See all
+      </Link>
     </div>
   );
 };

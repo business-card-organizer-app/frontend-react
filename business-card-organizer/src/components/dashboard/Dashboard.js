@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
 import { UserCard } from '../../containers/cards';
-import EventShortList from '../events/EventShortList';
+import { EventShortList } from '../../containers/events';
 import CollectionList from '../CollectionList';
 import { CardShortList } from '../cardlist';
+import { Grid } from 'semantic-ui-react';
 import NavBar from '../NavBar/NavBar';
 
 import styled from 'styled-components';
 
 const StyledDashboardContainer = styled.div`
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  margin: 10px auto;
+`;
+
+const ListContainer = styled.div`
+  width: 100%;
 `;
 
 export default function Dashboard(props) {
   const [cardCollection, setCardCollection] = useState([]);
-  const [userEvents, setUserEvents] = useState([]);
 
   useEffect(() => {
     props.getCardCollection(props.userId);
@@ -30,8 +36,8 @@ export default function Dashboard(props) {
   return (
     <StyledDashboardContainer>
       <UserCard id={props.userId} />
-      <div className='list-container'>
-        {/* <EventShortList userevents={userevents} /> */}
+      <ListContainer>
+        <EventShortList />
         <CardShortList cardcollection={cardCollection} />
         <button
           onClick={() =>
@@ -40,7 +46,7 @@ export default function Dashboard(props) {
         >
           Press
         </button>
-      </div>
+      </ListContainer>
     </StyledDashboardContainer>
   );
 }

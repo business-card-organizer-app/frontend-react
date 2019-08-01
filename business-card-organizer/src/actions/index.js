@@ -30,7 +30,10 @@ export const login = creds => dispatch => {
       localStorage.setItem('token', token);
       localStorage.setItem('userId', id);
       localStorage.setItem('email', creds.email);
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data.data[0] });
+      setTimeout(
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data.data[0] }),
+        1000
+      );
     })
     .catch(err => {
       console.log(err);
@@ -252,13 +255,13 @@ export const ADD_CARD_COLLECTION_START = 'ADD_CARD_COLLECTION_START';
 export const ADD_CARD_COLLECTION_SUCCESS = 'ADD_CARD_COLLECTION_SUCCESS';
 export const ADD_CARD_COLLECTION_ERROR = 'ADD_CARD_COLLECTION_ERROR';
 
-export const addCardCollection = (userId, cardInfo) => dispatch => {
+export const addCardCollection = (userId, collectionInfo) => dispatch => {
   dispatch({ type: ADD_CARD_COLLECTION_START });
   return axios({
     ...axiosOptions,
     method: 'post',
     url: `user/${userId}/collection`,
-    data: cardInfo
+    data: collectionInfo // { card_id: cardId, event_id: eventId }
   })
     .then(res => {
       console.log(res);
