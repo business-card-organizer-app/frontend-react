@@ -64,6 +64,7 @@ function App() {
         <PrivateRoute exact path='/card/:id' component={UserCard} />
         <PrivateRoute exact path='/' component={Dashboard} />
         <Route component={NotFound} />
+
       </Switch>
     </div>
   );
