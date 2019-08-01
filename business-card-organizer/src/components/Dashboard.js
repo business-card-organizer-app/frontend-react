@@ -2,6 +2,7 @@ import React from 'react';
 
 import LargeCard from './LargeCard';
 import EventShortList from './events/EventShortList';
+import CardShortList from './cardlist/CardShortList';
 import CollectionList from './CollectionList';
 import NavBar from './components/NavBar/NavBar';
 

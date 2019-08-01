@@ -24,6 +24,7 @@ const EventShortList = props => {
       {userEventsList.map((e, i) =>
         i < 3 ? <EventCard key={e.id} {...e} props={e} /> : null)}
 
+      <br />
       <Link className='event-button' to='/events'>See all</Link>
     </div>
   );
