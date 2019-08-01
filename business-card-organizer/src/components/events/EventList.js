@@ -12,6 +12,8 @@ const EventList = props => {
     props.eventsForUser
   ]);
 
+  console.log(props)
+
   return (
     <div className='event-list'>
       <h1>
