@@ -12,8 +12,10 @@ import './App.css';
 import { ProfileCard } from './containers/profile';
 import { EditUser } from './containers/edit';
 import { AddEvent } from './containers/events';
+import { Dashboard } from './containers/dashboard';
+import NavBar from './components/NavBar/NavBar';
 
-const Dashboard = () => {
+const wat = () => {
   return <h1>lol</h1>;
 };
 
@@ -64,7 +66,6 @@ function App() {
         <PrivateRoute exact path='/card/:id' component={UserCard} />
         <PrivateRoute exact path='/' component={Dashboard} />
         <Route component={NotFound} />
-
       </Switch>
     </div>
   );

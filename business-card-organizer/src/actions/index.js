@@ -1,4 +1,7 @@
 import axios from 'axios';
+import axiosRetry from 'axios-retry';
+
+axiosRetry(axios, { retries: 3 });
 
 const axiosOptions = {
   method: 'get',
@@ -13,8 +16,6 @@ const axiosOptions = {
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
-
-const POST_LOGIN_URL = 'https://bussiness-card-app.herokuapp.com/api/login';
 
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
@@ -42,9 +43,6 @@ export const login = creds => dispatch => {
 export const REGISTER_START = 'REGISTER_START';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_ERROR = 'REGISTER_ERROR';
-
-const POST_REGISTER_URL =
-  'https://bussiness-card-app.herokuapp.com/api/register';
 
 export const register = creds => dispatch => {
   dispatch({ type: REGISTER_START });
@@ -225,5 +223,49 @@ export const editCard = (userId, cardInfo) => dispatch => {
     .catch(err => {
       console.log(err);
       dispatch({ type: CARD_EDIT_ERROR, error: err });
+    });
+};
+
+// GET CARD COLLECTION
+
+export const GET_CARD_COLLECTION_START = 'GET_CARD_COLLECTION_START';
+export const GET_CARD_COLLECTION_SUCCESS = 'GET_CARD_COLLECTION_SUCCESS';
+export const GET_CARD_COLLECTION_ERROR = 'GET_CARD_COLLECTION_ERROR';
+
+export const getCardCollection = userId => dispatch => {
+  dispatch({ type: GET_CARD_COLLECTION_START });
+  return axios({
+    ...axiosOptions,
+    url: `user/${userId}/collection`
+  })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: GET_CARD_COLLECTION_SUCCESS, payload: res });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: GET_CARD_COLLECTION_ERROR, error: err });
+    });
+};
+
+export const ADD_CARD_COLLECTION_START = 'ADD_CARD_COLLECTION_START';
+export const ADD_CARD_COLLECTION_SUCCESS = 'ADD_CARD_COLLECTION_SUCCESS';
+export const ADD_CARD_COLLECTION_ERROR = 'ADD_CARD_COLLECTION_ERROR';
+
+export const addCardCollection = (userId, cardInfo) => dispatch => {
+  dispatch({ type: ADD_CARD_COLLECTION_START });
+  return axios({
+    ...axiosOptions,
+    method: 'post',
+    url: `user/${userId}/collection`,
+    data: cardInfo
+  })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: ADD_CARD_COLLECTION_SUCCESS, payload: res });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: ADD_CARD_COLLECTION_ERROR, error: err });
     });
 };
