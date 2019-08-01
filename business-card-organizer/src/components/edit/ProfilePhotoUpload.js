@@ -3,7 +3,7 @@
 // [3] Send file to API onClick
 // [4] Need to create an img on the UserCard to display the profille photo with the data passed down as props from the API request
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 
 const ProfilePhotoUpload = props => {
@@ -11,20 +11,22 @@ const ProfilePhotoUpload = props => {
         selectedFile: null
     })
 
+    const [id, setID] = useState('');
+
     const fileSelectedHandler = event => {
         setState({selectedFile: event.target.files[0]})
         console.log('event.target.files[0]', event.target.files[0])
-        console.log('state', state)
     }
 
     const fileUploadHandler = () => {
         const fd = new FormData();
         fd.append('image', state.selectedFile, state.selectedFile.name)
         // Unsure of API endpoint
-        Axios.post('https://bussiness-card-app.herokuapp.com/api/user/${user_id}/image', fd)
+        Axios.patch(`https://bussiness-card-app.herokuapp.com/api/user/${id}/image`, fd)
         .then(res => {
             console.log(res)
         })
+        console.log('state onClick: ', state)
     }
 
     return (
