@@ -12,9 +12,15 @@ import './App.css';
 import { ProfileCard } from './containers/profile';
 import { EditUser } from './containers/edit';
 import { AddEvent } from './containers/events';
+import ProfilePhotoUpload from './components/edit/ProfilePhotoUpload';
 
 const Dashboard = () => {
-  return <h1>lol</h1>;
+  // return <h1>lol</h1>;
+  return (
+    <div>
+      <ProfilePhotoUpload />
+    </div>
+  )
 };
 
 const NotFound = props => {
