@@ -4,7 +4,7 @@ import LargeCard from '../../components/LargeCard';
 
 const mapStateToProps = ({ userReducer }) => ({
   error: userReducer.error,
-  gettingUser: userReducer.editingUser,
+  gettingUser: userReducer.gettingUser,
   userId: userReducer.userId,
   user: userReducer.user
 });

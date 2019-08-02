@@ -19,7 +19,9 @@ const LargeCard = props => {
 
   useEffect(() => {
     let handle = props.userId;
-    if (props.match.params.id) handle = props.match.params.id;
+    if (props.match) {
+      if (props.match.params.id) handle = props.match.params.id;
+    }
     props.getUser(handle);
   }, []);
 

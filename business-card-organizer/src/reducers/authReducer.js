@@ -23,6 +23,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         loggingIn: false,
         token: action.payload.token,
+        userId: action.payload.id,
         error: null
       };
     case actionType.LOGIN_ERROR:

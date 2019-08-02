@@ -12,9 +12,11 @@ const CreateCard = props => {
   });
 
   const handleChange = e => {
+    let value = e.target.value;
+    if (e.target.name === 'phone') value = parseInt(value, 10);
     setCardInfo({
       ...cardInfo,
-      [e.target.name]: e.target.value
+      [e.target.name]: value
     });
   };
 
@@ -38,7 +40,8 @@ const CreateCard = props => {
         .then(() => props.history.push(`${props.userId}`));
     } else {
       props
-        .editCard(props.userId, { ...cardInfo, qr_code: props.card.qr_code })
+        // .editCard(props.userId, { ...cardInfo, qr_code: props.card.qr_code })
+        .editCard(props.userId, { ...cardInfo })
         .then(() => props.history.push(`${props.userId}`));
     }
   };

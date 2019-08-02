@@ -2,16 +2,17 @@ import { connect } from 'react-redux';
 import {
   getCard,
   getUser,
-  addCardCollection,
-  getUserEvents
+  getUserEvents,
+  getCardCollection
 } from '../../actions';
-import { UserCard } from '../../components/cards';
+import { CardList } from '../../components/cardlist';
 
 const mapStateToProps = ({
   cardReducer,
   userReducer,
   authReducer,
-  eventReducer
+  eventReducer,
+  collectionReducer
 }) => ({
   cardGetError: cardReducer.error,
   userGetError: userReducer.error,
@@ -22,10 +23,11 @@ const mapStateToProps = ({
   card: cardReducer.card,
   user: userReducer.user,
   loggedInUserId: authReducer.userId,
-  events: eventReducer.eventsForUser
+  events: eventReducer.eventsForUser,
+  cardcollection: collectionReducer.collection
 });
 
 export default connect(
   mapStateToProps,
-  { getCard, getUser, addCardCollection, getUserEvents }
-)(UserCard);
+  { getCard, getUser, getUserEvents, getCardCollection }
+)(CardList);

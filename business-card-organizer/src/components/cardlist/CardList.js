@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import SmallCardCreator from './SmallCardCreator';
 
@@ -15,8 +15,15 @@ const StyledCardList = styled.div`
 `;
 
 export default function CardList(props) {
-  const { cardcollection } = props;
-  console.log(props);
+  const [cardcollection, setCardCollection] = useState([]);
+
+  useEffect(() => {
+    props.getCardCollection(props.loggedInUserId);
+  }, []);
+
+  useEffect(() => {
+    setCardCollection([...props.cardcollection]);
+  }, [props.cardcollection]);
 
   return (
     <StyledCardList>
@@ -28,7 +35,7 @@ export default function CardList(props) {
             occupation={card.occupation}
             phone={card.phone}
             email={card.email}
-            tagline={card.tagline}
+            // tagline={card.tagline}
             qr_code={card.qr_code}
           />
         );
