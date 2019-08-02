@@ -25,7 +25,7 @@ const NotFound = props => {
 function App() {
   return (
     <div className='App'>
-      {/* <NavBar /> */}
+      <NavBar />
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
