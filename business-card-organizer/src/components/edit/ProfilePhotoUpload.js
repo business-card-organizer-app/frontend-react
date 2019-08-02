@@ -31,7 +31,7 @@ const ProfilePhotoUpload = props => {
 
     return (
         <div>
-            <h1>Hello world!</h1>
+            <h1>Hello world</h1>
             <input type='file' name='file' onChange={fileSelectedHandler}/>
             <button onClick={fileUploadHandler}>Upload</button>
         </div>
