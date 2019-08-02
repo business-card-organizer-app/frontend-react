@@ -32,7 +32,6 @@ const EventList = props => {
 
   return (
     <StyledDiv>
-      <h1>Place Nav Here</h1>
       <h1>[{props.eventsForUser.length}] Events:</h1>
 
       {userEventsList.map(e => (
