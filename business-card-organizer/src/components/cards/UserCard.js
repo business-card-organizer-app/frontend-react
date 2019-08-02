@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Card, Image, Dropdown } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 
 const UserCard = props => {
@@ -53,15 +54,9 @@ const UserCard = props => {
       };
     });
     setEventsToSelect(eventsArray);
-    console.log(eventsArray);
   }, [props.events]);
 
-  const editButton = (
-    <button onClick={() => props.history.push('/card/edit')}>Edit</button>
-  );
-
   const handleChange = (event, { value }) => {
-    console.log(value);
     setSelectedEventId(value);
   };
 
@@ -81,7 +76,7 @@ const UserCard = props => {
         selection
         options={eventsToSelect}
       />
-      <button>Add to Collection</button>
+      <button type='submit'>Add to Collection</button>
     </Form>
   );
 
@@ -102,7 +97,10 @@ const UserCard = props => {
       </Card.Content>
 
       {props.loggedInUserId === props.userId ? (
-        <Card.Content extra> {editButton}</Card.Content>
+        <Card.Content extra>
+          {' '}
+          <Link to='/card/edit'>Edit</Link>
+        </Card.Content>
       ) : (
         <Card.Content extra> {addToCollectionButton}</Card.Content>
       )}
