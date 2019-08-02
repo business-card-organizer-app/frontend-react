@@ -5,13 +5,18 @@ import SmallCardCreator from './SmallCardCreator';
 import styled from 'styled-components';
 
 const StyledCardList = styled.div`
-  max-width: 500px;
-  width: 100%;
+  max-width: 375px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  @media (min-width: 375px) {
+    width: 100%;
+  }
+  @media (min-width: 767px) {
+    max-width: 767px;
+  }
 `;
 
 export default function CardList(props) {
