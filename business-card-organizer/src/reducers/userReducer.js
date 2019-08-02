@@ -6,7 +6,8 @@ const initialState = {
   user: { id: -1, email: '', password: '', first_name: '', last_name: '' },
   error: '',
   gettingUser: false,
-  editingUser: false
+  editingUser: false,
+  editingUserImage: false
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -50,6 +51,26 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         editingUser: false,
+        error: action.error
+      };
+
+    // EDIT_USER_IMAGE
+    case actionType.EDIT_USER_IMAGE_START:
+      return {
+        ...state,
+        editingUserImage: true,
+        error: null
+      };
+    case actionType.EDIT_USER_IMAGE_SUCCESS:
+      return {
+        ...state,
+        editingUserImage: false,
+        error: null
+      };
+    case actionType.EDIT_USER_IMAGE_ERROR:
+      return {
+        ...state,
+        editingUserImage: false,
         error: action.error
       };
     default:

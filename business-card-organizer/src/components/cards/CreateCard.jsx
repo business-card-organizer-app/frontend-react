@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 
 import { Button, Form, Grid, Message, Icon } from 'semantic-ui-react';
+import ProfilePhotoUpload from '../edit/ProfilePhotoUpload';
 const moment = require('moment');
 
 const CreateCard = props => {
@@ -71,6 +72,10 @@ const CreateCard = props => {
             placeholder='Phone Number'
             value={cardInfo.phone}
             onChange={handleChange}
+          />
+          <ProfilePhotoUpload
+            editImage={props.editImage}
+            id={props.loggedInUserId}
           />
           <Button
             color='green'

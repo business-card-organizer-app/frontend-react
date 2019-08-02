@@ -3,39 +3,33 @@
 // [3] Send file to API onClick
 // [4] Need to create an img on the UserCard to display the profille photo with the data passed down as props from the API request
 
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const ProfilePhotoUpload = props => {
-    const [state, setState] = useState({
-        selectedFile: null
-    })
+  const [state, setState] = useState({
+    selectedFile: null
+  });
 
-    const [id, setID] = useState('');
+  const fileSelectedHandler = event => {
+    setState({ selectedFile: event.target.files[0] });
+    console.log('event.target.files[0]', event.target.files[0]);
+  };
 
-    const fileSelectedHandler = event => {
-        setState({selectedFile: event.target.files[0]})
-        console.log('event.target.files[0]', event.target.files[0])
-    }
+  const fileUploadHandler = () => {
+    const fd = new FormData();
+    fd.append('image', state.selectedFile, state.selectedFile.name);
+    props.editImage(props.id, fd);
+  };
 
-    const fileUploadHandler = () => {
-        const fd = new FormData();
-        fd.append('image', state.selectedFile, state.selectedFile.name)
-        // Unsure of API endpoint
-        Axios.patch(`https://bussiness-card-app.herokuapp.com/api/user/${id}/image`, fd)
-        .then(res => {
-            console.log(res)
-        })
-        console.log('state onClick: ', state)
-    }
-
-    return (
-        <div>
-            <h1>Hello world</h1>
-            <input type='file' name='file' onChange={fileSelectedHandler}/>
-            <button onClick={fileUploadHandler}>Upload</button>
-        </div>
-    )
-}
+  return (
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <input type='file' name='file' onChange={fileSelectedHandler} />
+      <button style={{ margin: 10 }} onClick={fileUploadHandler}>
+        Upload
+      </button>
+    </div>
+  );
+};
 
 export default ProfilePhotoUpload;

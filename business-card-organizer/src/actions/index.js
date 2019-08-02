@@ -272,3 +272,25 @@ export const addCardCollection = (userId, collectionInfo) => dispatch => {
       dispatch({ type: ADD_CARD_COLLECTION_ERROR, error: err });
     });
 };
+
+export const EDIT_USER_IMAGE_START = 'EDIT_USER_IMAGE_START';
+export const EDIT_USER_IMAGE_SUCCESS = 'EDIT_USER_IMAGE_SUCCESS';
+export const EDIT_USER_IMAGE_ERROR = 'EDIT_USER_IMAGE_ERROR';
+
+export const editImage = (userId, image) => dispatch => {
+  dispatch({ type: EDIT_USER_IMAGE_START });
+  return axios({
+    ...axiosOptions,
+    method: 'patch',
+    url: `user/${userId}/image`,
+    data: { user_image: image }
+  })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: EDIT_USER_IMAGE_SUCCESS, payload: res });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({ type: EDIT_USER_IMAGE_ERROR, error: err });
+    });
+};
