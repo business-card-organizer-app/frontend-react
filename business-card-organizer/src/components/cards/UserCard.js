@@ -81,30 +81,32 @@ const UserCard = props => {
   );
 
   return (
-    <Card>
-      <Image src={cardInfo.qr_code} wrapped ui={false} />
-      <Card.Content>
-        <Card.Header>
-          {`${userInfo.first_name} ${userInfo.last_name}`}
-        </Card.Header>
-        <Card.Meta>
-          <span className='email'>{userInfo.email}</span>
-        </Card.Meta>
-        <Card.Meta>
-          <span className='tel'>{cardInfo.phone}</span>
-        </Card.Meta>
-        <Card.Description>{cardInfo.occupation}</Card.Description>
-      </Card.Content>
-
-      {props.loggedInUserId === props.userId ? (
-        <Card.Content extra>
-          {' '}
-          <Link to='/card/edit'>Edit</Link>
+    <div className='user-card-container'>
+      <Card id='user-card'>
+        <Image src={cardInfo.qr_code} wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>
+            {`${userInfo.first_name} ${userInfo.last_name}`}
+          </Card.Header>
+          <Card.Meta>
+            <span className='email'>{userInfo.email}</span>
+          </Card.Meta>
+          <Card.Meta>
+            <span className='tel'>{cardInfo.phone}</span>
+          </Card.Meta>
+          <Card.Description>{cardInfo.occupation}</Card.Description>
         </Card.Content>
-      ) : (
-        <Card.Content extra> {addToCollectionButton}</Card.Content>
-      )}
-    </Card>
+
+        {props.loggedInUserId === props.userId ? (
+          <Card.Content extra>
+            {' '}
+            <Link to='/card/edit'>Edit</Link>
+          </Card.Content>
+        ) : (
+          <Card.Content extra> {addToCollectionButton}</Card.Content>
+        )}
+      </Card>
+    </div>
   );
 };
 

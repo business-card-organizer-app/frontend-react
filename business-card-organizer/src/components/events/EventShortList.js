@@ -20,7 +20,7 @@ const EventShortList = props => {
 
   return (
     <div className='event-short-list'>
-      <h1>My Events:</h1>
+      <h1>My Recent Events</h1>
 
       {props.eventsForUser.map((e, i) =>
         i < 3 ? (
