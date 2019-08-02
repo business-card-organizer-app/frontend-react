@@ -68,7 +68,7 @@ const UserCard = props => {
   const addToCollectionButton = (
     <Form
       onSubmit={() =>
-        props.addCardCollection(props.userId, {
+        props.addCardCollection(props.loggedInUserId, {
           card_id: props.card.id,
           event_id: selectedEventId
         })

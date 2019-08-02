@@ -24,20 +24,29 @@ const ListContainer = styled.div`
 
 export default function Dashboard(props) {
   const [cardCollection, setCardCollection] = useState([]);
+  const [userEventsList, setUserEventsList] = useState([]);
 
   useEffect(() => {
     props.getCardCollection(props.userId);
+    props.getUserEvents(props.userId);
   }, []);
 
   useEffect(() => {
     setCardCollection([...props.collection]);
   }, [props.collection]);
 
+  useEffect(() => setUserEventsList([...props.eventsForUser]), [
+    props.eventsForUser
+  ]);
+
   return (
     <StyledDashboardContainer>
       <UserCard id={props.userId} />
       <ListContainer>
-        <EventShortList />
+        <EventShortList
+          eventsForUser={userEventsList}
+          cardCollection={cardCollection}
+        />
         <CardShortList cardcollection={cardCollection} />
         <button
           onClick={() =>
