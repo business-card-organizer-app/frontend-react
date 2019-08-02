@@ -48,7 +48,6 @@ const StyledQRContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  padding-right: 10px;
 `;
 
 export default function SmallCardCreator(props) {
