@@ -4,7 +4,6 @@ const initialState = {
   token: localStorage.getItem('token'),
   userId: parseInt(localStorage.getItem('userId'), 10),
   user: { id: -1, email: '', password: '', first_name: '', last_name: '' },
-  email: localStorage.getItem('email'),
   error: '',
   gettingUser: false,
   editingUser: false
@@ -24,6 +23,7 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         gettingUser: false,
         user: { ...action.payload.data.data[0] },
+        userId: parseInt(action.payload.data.data[0].id, 10),
         error: null
       };
     case actionType.GET_USER_ERROR:

@@ -46,7 +46,14 @@ const EventCard = props => {
       <p>Date: {props.event_date}</p>
       <p>Venue: {props.event_venue}</p>
       <StyledLastPar>Location: {props.event_location}</StyledLastPar>
-      <StyledButtonPar>Cards: ***</StyledButtonPar>
+      <StyledButtonPar>
+        Cards:{' '}
+        {
+          props.cardCollection.filter(
+            card => card.event_name === props.event_name
+          ).length
+        }
+      </StyledButtonPar>
     </StyledDiv>
   );
 };

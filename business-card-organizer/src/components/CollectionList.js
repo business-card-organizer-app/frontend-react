@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CardList from './CardList';
+import { CardList } from './cardlist';
 
 import styled from 'styled-components';
 
@@ -14,14 +14,14 @@ const StyledCollectionList = styled.div`
   margin: 0 auto;
 `;
 
-export default function CollectionList (props) {
-    const { cardcollection } = props;
+export default function CollectionList(props) {
+  const { cardcollection } = props;
 
-    return (
-        <StyledCollectionList>
-            <h1>My Collection:</h1>
+  return (
+    <StyledCollectionList>
+      <h1>My Collection:</h1>
 
-            <CardList cardcollection={cardcollection} />
-        </StyledCollectionList>
-    )
+      <CardList cardcollection={cardcollection} />
+    </StyledCollectionList>
+  );
 }
