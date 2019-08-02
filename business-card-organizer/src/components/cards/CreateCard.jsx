@@ -29,7 +29,7 @@ const CreateCard = props => {
     setCardInfo({
       ...cardInfo,
       ...props.card,
-      qr_code: `http://lvh.me/card/${props.userId}` // TODO change to final URL
+      qr_code: `http://lambda-businesscards.netlify.com/card/${props.userId}` // TODO change to final URL
     });
   }, [props.userId, props.card]);
 
