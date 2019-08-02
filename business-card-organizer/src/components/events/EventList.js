@@ -1,5 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import EventCard from './EventCard';
+
+const StyledDiv = styled.div`
+  max-width: 375px;
+  margin: 0 auto;
+  @media (min-width: 375px) {
+    width: 100%;
+  }
+  @media (min-width: 767px) {
+    max-width: 767px;
+  }
+`;
 
 const EventList = props => {
   const [userEventsList, setUserEventsList] = useState([]);
@@ -19,8 +31,9 @@ const EventList = props => {
   console.log(props);
 
   return (
-    <div className='event-list'>
-      <h1>[{props.eventsForUser.length}] EventList:</h1>
+    <StyledDiv>
+      <h1>Place Nav Here</h1>
+      <h1>[{props.eventsForUser.length}] Events:</h1>
 
       {userEventsList.map(e => (
         <EventCard
@@ -30,7 +43,7 @@ const EventList = props => {
           cardCollection={cardCollection}
         />
       ))}
-    </div>
+    </StyledDiv>
   );
 };
 
